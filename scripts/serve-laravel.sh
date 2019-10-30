@@ -54,6 +54,18 @@ block="server {
         $headersTXT
     }
 
+    location = /users {
+        try_files \$uri \$uri/ /index.html;
+    }
+
+    location = /users/create {
+        try_files \$uri \$uri/ /index.html;
+    }
+
+    location ~ ^/users(.*)$  {
+        try_files \$uri \$uri/ /index.html;
+    }
+
     $configureZray
 
     location = /favicon.ico { access_log off; log_not_found off; }
